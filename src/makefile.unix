@@ -158,15 +158,7 @@ OBJS= \
     obj/chainparams.o \
     obj/state.o \
     obj/bloom.o \
-    Lyra2REV2/Lyra2RE.o \
-    Lyra2REV2/Lyra2.o \
-    Lyra2REV2/Sponge.o \
-    Lyra2REV2/blake.o \
-    Lyra2REV2/groestl.o \
-    Lyra2REV2/keccak.o \
-    Lyra2REV2/skein.o \
-    Lyra2REV2/cubehash.o \
-	Lyra2REV2/bmw.o
+    obj/keccak.o
 
 
 all: EduCoind
@@ -201,9 +193,6 @@ obj/%.o: %.c
 	      -e '/^$$/ d' -e 's/$$/ :/' < $(@:%.o=%.d) >> $(@:%.o=%.P); \
 	  rm -f $(@:%.o=%.d)	
 
-Lyra2RE/%.o: Lyra2RE/%.c
-	$(CC) -c -O3 -o $@ $<
-	  
 EduCoind: $(OBJS:obj/%=obj/%)
 	$(LINK) $(xCXXFLAGS) -o $@ $^ $(xLDFLAGS) $(LIBS)
 
@@ -225,7 +214,6 @@ test_shadow: $(TESTOBJS) $(filter-out obj/init.o obj/shadowcoind.o,$(OBJS:obj/%=
 clean:
 	-rm -f EduCoind
 	-rm -f obj/*.o
-	-rm -f Lyra2RE/*.o
 	-rm -f obj/*.P
 	-rm -f obj/build.h
 	-rm -f test_EduCoin

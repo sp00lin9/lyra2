@@ -5,7 +5,6 @@
 #ifndef BITCOIN_MAIN_H
 #define BITCOIN_MAIN_H
 
-#include "hash.h"
 #include "core.h"
 #include "bignum.h"
 #include "sync.h"
@@ -691,7 +690,7 @@ public:
     
     uint256 GetHash() const
     {
-		return lyra2re2_hash(BEGIN(nVersion), END(nNonce));
+		return HashKeccak(BEGIN(nVersion), END(nNonce));
     }
     
     int64_t GetBlockTime() const
