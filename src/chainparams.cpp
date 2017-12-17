@@ -103,7 +103,7 @@ static void convertSeeds(std::vector<CAddress> &vSeedsOut, const unsigned int *d
 class CBaseChainParams : public CChainParams {
 public:
     CBaseChainParams() {
-        const char* pszTimestamp = " 9g8ysfr90gysfd98gysfdgysodf9gysodfiuygsodifuygsodifuygsodifuygsoifdugsoifduygsoifdug ";
+        const char* pszTimestamp = "97df97ad90f7adf0987adf987adf9087adf9087adf098a7df908a7df908a7df90a8d7f90a8d7f908a7dfa9087df980ad7f890ad7f890ad7f";
         std::vector<CTxIn> vin;
         vin.resize(1);
         vin[0].scriptSig = CScript() << 0 << CBigNum(42) << std::vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
@@ -116,6 +116,8 @@ public:
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
         genesis.nTime    = GENESIS_BLOCK_TIME;
+        
+        vSeeds.push_back(CDNSSeedData("192.241.228.205", "192.241.228.205"));
     }
     virtual const CBlock& GenesisBlock() const { return genesis; }
     virtual const std::vector<CAddress>& FixedSeeds() const {
@@ -147,7 +149,7 @@ public:
         bnProofOfStakeLimit = CBigNum(~uint256(0) >> 20);
         bnProofOfStakeLimitV2 = CBigNum(~uint256(0) >> 48);        
         genesis.nBits    = bnProofOfWorkLimit.GetCompact();
-        genesis.nNonce   = 315222;
+        genesis.nNonce   = 561653;
         hashGenesisBlock = genesis.GetHash();	
 		
         // If genesis block hash does not match, then generate new genesis hash.
@@ -175,8 +177,8 @@ public:
             printf("genesis.hashMerkleRoot = %s\n", genesis.hashMerkleRoot.ToString().c_str());
         }   		
 		
-        assert(hashGenesisBlock == uint256("0x00000efb5c16425604b29ffd9180c4d8db9d6e2de26eb9a341c945da9e4677df"));
-        assert(genesis.hashMerkleRoot == uint256("0xe0cea748309c676dc6701d649526b3759f15e1fc2a41e0f76291f857db799e7a"));
+        assert(hashGenesisBlock == uint256("0x00000ed11f96a875b8ec31fa7b688a8020ed6634722ab9e93ef1c18f95494555"));
+        assert(genesis.hashMerkleRoot == uint256("0xf2325e86c4de4f38014684995f659ab045823676509247a0ee22b5cf6499557b"));
 		
         base58Prefixes[PUBKEY_ADDRESS]      = list_of(33).convert_to_container<std::vector<unsigned char> >();
         base58Prefixes[SCRIPT_ADDRESS]      = list_of(125).convert_to_container<std::vector<unsigned char> >();
