@@ -5,7 +5,6 @@
 #ifndef BITCOIN_MAIN_H
 #define BITCOIN_MAIN_H
 
-#include "hash.h"
 #include "core.h"
 #include "bignum.h"
 #include "sync.h"
@@ -14,9 +13,7 @@
 #include "script.h"
 #include "scrypt.h"
 #include "state.h"
-#include "Keccak/hashKeccak.h"
 #include <list>
-#include <ctime>
 
 class CWallet;
 class CWalletTx;
@@ -690,19 +687,10 @@ public:
     {
         return (nBits == 0);
     }
-
+    
     uint256 GetHash() const
     {
-        int currentTime = time(NULL);
-
-        if (currentTime <= 1513544400)
-        {
-        return HashKeccak(BEGIN(nVersion), END(nNonce));
-        }
-        else
-        {
-		return lyra2re2_hash(BEGIN(nVersion), END(nNonce));
-        }
+		return HashKeccak(BEGIN(nVersion), END(nNonce));
     }
     
     int64_t GetBlockTime() const

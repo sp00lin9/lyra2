@@ -47,7 +47,7 @@ enum
     SMSG_RELAY   = (1 << 4),
 };
 
-const int64_t GENESIS_BLOCK_TIME = 1513540800;
+const int64_t GENESIS_BLOCK_TIME = 1514005953;
 
 static const int64_t COIN = 100000000;
 static const int64_t CENT = 1000000;
