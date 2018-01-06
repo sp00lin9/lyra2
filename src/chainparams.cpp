@@ -103,7 +103,7 @@ static void convertSeeds(std::vector<CAddress> &vSeedsOut, const unsigned int *d
 class CBaseChainParams : public CChainParams {
 public:
     CBaseChainParams() {
-        const char* pszTimestamp = " 09/08/2017 - Equifax reports breach affecting 143 million U.S. consumers. ";
+        const char* pszTimestamp = "jfhvfshor8979853jgfsgj895h33oigjrjrelkgjroijgGGGGGGGGGGGGGGGGGGG";
         std::vector<CTxIn> vin;
         vin.resize(1);
         vin[0].scriptSig = CScript() << 0 << CBigNum(42) << std::vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
@@ -131,6 +131,11 @@ protected:
 class CMainParams : public CBaseChainParams {
 public:
     CMainParams() {
+
+
+
+        if (!fReindexing) {
+
         strNetworkID = "main";
         
         // The message start string is designed to be unlikely to occur in normal data.
@@ -149,7 +154,7 @@ public:
         bnProofOfStakeLimit = CBigNum(~uint256(0) >> 20);
         bnProofOfStakeLimitV2 = CBigNum(~uint256(0) >> 48);        
         genesis.nBits    = bnProofOfWorkLimit.GetCompact();
-        genesis.nNonce   = 388249;
+        genesis.nNonce   = 3722045;
         hashGenesisBlock = genesis.GetHash();	
 		
         // If genesis block hash does not match, then generate new genesis hash.
@@ -177,8 +182,8 @@ public:
             printf("genesis.hashMerkleRoot = %s\n", genesis.hashMerkleRoot.ToString().c_str());
         }   		
 		
-        assert(hashGenesisBlock == uint256("0x000002927ec543fd1f21851d8ca0df5dc51bc754ab12dd894a3983d38f4c5214"));
-        assert(genesis.hashMerkleRoot == uint256("0x3cac9de0aee13e290ab6354daaf662656a24555ed12667a4bcec41cbab64ce64"));
+        assert(hashGenesisBlock == uint256("0x0000045ec9911e259270af94cb06efde56f20831b55ae7e0812a51dbd0e270f8"));
+        assert(genesis.hashMerkleRoot == uint256("0xc5ef2abd4d84e797c8a91a4161ea95ed9ac55def23354d336163b79afe37877e"));
 		
         base58Prefixes[PUBKEY_ADDRESS]      = list_of(33).convert_to_container<std::vector<unsigned char> >();
         base58Prefixes[SCRIPT_ADDRESS]      = list_of(125).convert_to_container<std::vector<unsigned char> >();
@@ -192,6 +197,7 @@ public:
         base58Prefixes[EXT_SECRET_KEY_BTC]  = list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >(); // xpub
         //convertSeed6(vFixedSeeds, pnSeed6_main, ARRAYLEN(pnSeed6_main));
         convertSeeds(vFixedSeeds, pnSeed, ARRAYLEN(pnSeed), nDefaultPort);
+}
     }
     
     virtual Network NetworkID() const { return CChainParams::MAIN; }

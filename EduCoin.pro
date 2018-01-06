@@ -221,7 +221,6 @@ HEADERS += \
     src/net.h \
     src/key.h \
     src/extkey.h \
-    src/sph_keccak.h \
     src/sph_types.h \
     src/eckey.h \
     src/db.h \
@@ -281,7 +280,18 @@ HEADERS += \
     src/crypter.h \
     src/util.h \
     src/wallet.h \
-    src/walletdb.h
+    src/walletdb.h \
+	src/Keccak/hashKeccak.h \
+    src/Lyra2REV2/Lyra2.h \
+    src/Lyra2REV2/Lyra2RE.h \
+    src/Lyra2REV2/sph_blake.h \
+    src/Lyra2REV2/sph_bmw.h \
+    src/Lyra2REV2/sph_cubehash.h \
+    src/Lyra2REV2/sph_groestl.h \
+    src/Lyra2REV2/sph_keccak.h \
+    src/Lyra2REV2/sph_skein.h \
+    src/Lyra2REV2/sph_types.h \
+    src/Lyra2REV2/Sponge.h
 
 SOURCES += \
     src/alert.cpp \
@@ -303,7 +313,6 @@ SOURCES += \
     src/addrman.cpp \
     src/db.cpp \
     src/walletdb.cpp \
-    src/keccak.c \
     src/noui.cpp \
     src/kernel.cpp \
     src/scrypt.cpp \
@@ -360,7 +369,16 @@ SOURCES += \
     src/crypter.cpp \
     src/rpcwallet.cpp \
     src/util.cpp \
-    src/wallet.cpp
+    src/wallet.cpp \
+    src/Lyra2REV2/blake.c \
+    src/Lyra2REV2/bmw.c \
+    src/Lyra2REV2/cubehash.c \
+    src/Lyra2REV2/groestl.c \
+    src/Lyra2REV2/keccak.c \
+    src/Lyra2REV2/Lyra2.c \
+    src/Lyra2REV2/Lyra2RE.c \
+    src/Lyra2REV2/skein.c \
+    src/Lyra2REV2/Sponge.c
 
 RESOURCES += \
     educoin.qrc

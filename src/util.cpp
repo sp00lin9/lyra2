@@ -1046,7 +1046,7 @@ boost::filesystem::path GetDefaultDataDir()
     
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "EduCoin2017-keccakfix";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "EduCoin2017-lyra2rev2";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -1058,10 +1058,10 @@ boost::filesystem::path GetDefaultDataDir()
         // Mac
         pathRet /= "Library/Application Support";
         fs::create_directory(pathRet);
-        return pathRet / "EduCoin2017-keccakfix";
+        return pathRet / "EduCoin2017-lyra2rev2";
     #else
         // Unix
-        return pathRet / ".EduCoin2017-keccakfix";
+        return pathRet / ".EduCoin2017-lyra2rev2";
     #endif
 #endif
 
